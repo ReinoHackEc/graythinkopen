@@ -1,0 +1,306 @@
+/* Gray Think Brand Variables */
+:root {
+  /* Primary Colors */
+  --primary-black: #000000;
+  --primary-gray-dark: #1f2937;
+  --primary-gray: #4b5563;
+  --primary-gray-light: #6b7280;
+  --secondary-gray: #9ca3af;
+  --light-gray: #d1d5db;
+  --extra-light-gray: #f3f4f6;
+  
+  /* Accent Colors */
+  --accent-orange: #f97316;
+  --accent-orange-dark: #ea580c;
+  --accent-orange-light: #fb923c;
+  --accent-orange-lighter: #fed7aa;
+  
+  /* Background & Text */
+  --background-white: #ffffff;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --border-gray: #e5e7eb;
+}
+
+/* Estilos adicionales específicos de la aplicación */
+
+/* Contenedor principal de la aplicación */
+.App {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--primary-gray-dark) 0%, var(--primary-black) 100%);
+}
+
+/* Estilos para el spinner de carga */
+.spinner {
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 3px solid #ffffff;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Estilos para las notificaciones */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.3s ease;
+}
+
+.notification.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.notification.success {
+  background-color: #10b981;
+}
+
+.notification.error {
+  background-color: #ef4444;
+}
+
+.notification.warning {
+  background-color: #f59e0b;
+}
+
+.notification.info {
+  background-color: #3b82f6;
+}
+
+/* Estilos para el modo de impresión */
+@media print {
+  .App {
+    background: white;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-break {
+    page-break-before: always;
+  }
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .grid-mobile {
+    grid-template-columns: 1fr;
+  }
+  
+  .text-mobile {
+    font-size: 0.875rem;
+  }
+}
+
+/* Estilos para tablets */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .grid-tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Estilos para el indicador de batería */
+.battery-indicator {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 24px;
+  border: 2px solid #374151;
+  border-radius: 4px;
+  background: #f3f4f6;
+}
+
+.battery-indicator::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  right: -4px;
+  width: 4px;
+  height: 12px;
+  background: #374151;
+  border-radius: 0 2px 2px 0;
+}
+
+.battery-level {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.battery-level.high {
+  background: linear-gradient(90deg, #10b981, #34d399);
+}
+
+.battery-level.medium {
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+}
+
+.battery-level.low {
+  background: linear-gradient(90deg, #ef4444, #f87171);
+}
+
+/* Estilos para el drag and drop de imágenes */
+.dropzone-active {
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+  border-color: #3b82f6;
+  border-style: dashed;
+}
+
+.image-preview {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.image-preview:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Estilos para los botones con iconos */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.btn-icon:hover {
+  transform: translateY(-1px);
+}
+
+/* Estilos para el código de barras */
+.barcode-display {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-align: center;
+  background: #f8fafc;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0;
+}
+
+/* Estilos para las secciones del formulario */
+.form-section {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.form-section:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-number {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: white;
+  font-size: 0.875rem;
+}
+
+/* Estilos para los estados de validación */
+.field-valid {
+  border-color: #10b981;
+}
+
+.field-valid:focus {
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
+}
+
+.field-error {
+  border-color: #ef4444;
+}
+
+.field-error:focus {
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.25);
+}
+
+/* Animaciones de entrada */
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s ease-out;
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.6s ease-out;
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Estilos para el modo de alta concentración */
+@media (prefers-contrast: high) {
+  .form-section {
+    border: 2px solid #000;
+  }
+  
+  .btn-primary {
+    background: #000;
+    border-color: #000;
+  }
+  
+  .btn-primary:hover {
+    background: #333;
+    border-color: #333;
+  }
+}
