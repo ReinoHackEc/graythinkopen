@@ -26,14 +26,17 @@
   "author": "MiniMax Agent",
   "license": "MIT",
   "dependencies": {
+    "@vitejs/plugin-react": "^4.7.0",
+    "clsx": "^2.1.1",
+    "html2canvas": "^1.4.1",
+    "jsbarcode": "^3.12.1",
+    "jspdf": "^2.5.2",
+    "lucide-react": "^0.364.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "lucide-react": "^0.364.0",
-    "jspdf": "^2.5.2",
-    "jsbarcode": "^3.12.1",
-    "html2canvas": "^1.4.1",
-    "xlsx": "^0.18.5",
-    "react-dropzone": "^14.3.8"
+    "react-dropzone": "^14.3.8",
+    "tailwind-merge": "^3.3.1",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
