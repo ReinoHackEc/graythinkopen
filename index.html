@@ -4,11 +4,824 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script type="module" crossorigin src="/assets/index-A9tD1kQp.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-Rw1kYEKi.css">
+  
+  <!-- Bibliotecas para formato original Gray Think -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.5/JsBarcode.all.min.js"></script>
 </head>
 
 <body>
   <div id="root"></div>
-  <script type="module" src="/src/main.tsx"></script>
+  
+  <!-- CORRECCIÓN AVANZADA GRAY THINK FORMATO ORIGINAL -->
+  <script>
+/**
+ * Gray Think - Corrección Avanzada con Formato Original
+ * Integrada directamente en el build de producción
+ * 
+ * @author MiniMax Agent
+ * @version 3.1.0
+ */
+
+(function() {
+  'use strict';
+  
+  console.log('🚀 [GRAYTHINK-ADVANCED] Iniciando corrección avanzada v3.1.0 (Integrada)');
+  
+  // Esperar a que React se monte completamente
+  let initAttempts = 0;
+  const maxAttempts = 20;
+  
+  function waitForReactAndInit() {
+    initAttempts++;
+    
+    // Buscar elementos que indiquen que React se ha montado
+    const reactElements = document.querySelectorAll('[data-testid], .bg-white, button');
+    
+    if (reactElements.length > 0 || initAttempts >= maxAttempts) {
+      console.log('🔧 [GRAYTHINK-ADVANCED] React detectado, aplicando correcciones...');
+      setTimeout(initializeAdvancedFixes, 2000); // Esperar un poco más para asegurar la carga completa
+    } else {
+      setTimeout(waitForReactAndInit, 500); // Intentar cada 500ms
+    }
+  }
+  
+  // Iniciar la espera después de que el DOM esté listo
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', waitForReactAndInit);
+  } else {
+    waitForReactAndInit();
+  }
+  
+  function initializeAdvancedFixes() {
+    console.log('🔧 [GRAYTHINK-ADVANCED] Aplicando correcciones avanzadas...');
+    
+    // Corregir dropdowns y botones
+    fixReactComponents();
+    
+    // Reemplazar funciones de generación
+    replaceWithOriginalFormat();
+    
+    // Agregar feedback visual
+    addAdvancedVisualFeedback();
+    
+    // Observar cambios en el DOM para re-aplicar correcciones
+    observeReactChanges();
+    
+    console.log('✅ [GRAYTHINK-ADVANCED] Correcciones avanzadas aplicadas (React)');
+  }
+  
+  function fixReactComponents() {
+    console.log('🔧 [GRAYTHINK-ADVANCED] Corrigiendo componentes React...');
+    
+    // Buscar y corregir botones PDF/Excel en toda la aplicación
+    setTimeout(() => {
+      const allButtons = document.querySelectorAll('button, [role="button"], .btn');
+      let pdfButtons = 0;
+      let excelButtons = 0;
+      
+      allButtons.forEach(button => {
+        const text = button.textContent?.toLowerCase() || '';
+        const className = button.className?.toLowerCase() || '';
+        
+        if (text.includes('pdf') || text.includes('generar') || className.includes('pdf')) {
+          button.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('📄 [GRAYTHINK-ADVANCED] Clic en botón PDF interceptado (React)');
+            handleAdvancedPDFGeneration();
+          });
+          pdfButtons++;
+        }
+        
+        if (text.includes('excel') || text.includes('exportar') || text.includes('export') || className.includes('excel')) {
+          button.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('📊 [GRAYTHINK-ADVANCED] Clic en botón Excel interceptado (React)');
+            handleAdvancedExcelGeneration();
+          });
+          excelButtons++;
+        }
+      });
+      
+      console.log(`🔍 [GRAYTHINK-ADVANCED] Encontrados ${pdfButtons} botones PDF y ${excelButtons} botones Excel en React`);
+    }, 1000);
+  }
+  
+  function observeReactChanges() {
+    // Observer para cuando React re-renderice componentes
+    const observer = new MutationObserver((mutations) => {
+      let shouldReapply = false;
+      
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+          mutation.addedNodes.forEach((node) => {
+            if (node.nodeType === 1) { // Element node
+              const hasButtons = node.querySelectorAll ? node.querySelectorAll('button').length > 0 : false;
+              if (hasButtons) {
+                shouldReapply = true;
+              }
+            }
+          });
+        }
+      });
+      
+      if (shouldReapply) {
+        console.log('🔄 [GRAYTHINK-ADVANCED] React re-renderizó, re-aplicando correcciones...');
+        setTimeout(fixReactComponents, 500);
+      }
+    });
+    
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  }
+  
+  function replaceWithOriginalFormat() {
+    console.log('🔧 [GRAYTHINK-ADVANCED] Reemplazando con formato original...');
+    
+    // Reemplazar funciones globales
+    window.generatePDF = handleAdvancedPDFGeneration;
+    window.generateExcel = handleAdvancedExcelGeneration;
+    window.generateBarcode = generateAdvancedBarcode;
+  }
+  
+  function generateAdvancedBarcode(code) {
+    try {
+      if (typeof JsBarcode === 'undefined') {
+        console.warn('⚠️ [GRAYTHINK-ADVANCED] JsBarcode no disponible, usando alternativa');
+        return generateFallbackBarcode(code);
+      }
+      
+      const canvas = document.createElement('canvas');
+      
+      // Configuración exacta del formato original
+      JsBarcode(canvas, code, {
+        format: 'CODE128',
+        width: 3,
+        height: 60,
+        displayValue: true,
+        fontSize: 14,
+        textAlign: 'center',
+        textPosition: 'bottom',
+        background: '#FFFFFF',
+        lineColor: '#000000',
+        margin: 10,
+        marginTop: 5,
+        marginBottom: 15,
+        fontOptions: 'bold'
+      });
+      
+      return canvas.toDataURL('image/png', 1.0);
+    } catch (error) {
+      console.warn('⚠️ [GRAYTHINK-ADVANCED] Error generando código de barras:', error);
+      return generateFallbackBarcode(code);
+    }
+  }
+  
+  function generateFallbackBarcode(code) {
+    const canvas = document.createElement('canvas');
+    canvas.width = 200;
+    canvas.height = 80;
+    const ctx = canvas.getContext('2d');
+    
+    // Fondo blanco
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // Dibujar líneas verticales como código de barras simple
+    ctx.fillStyle = '#000000';
+    const barWidth = 2;
+    const totalBars = Math.min(code.length * 6, 80);
+    const startX = (canvas.width - (totalBars * barWidth)) / 2;
+    
+    for (let i = 0; i < totalBars; i++) {
+      if (i % 3 === 0 || i % 7 === 0) {
+        ctx.fillRect(startX + (i * barWidth), 10, barWidth, 40);
+      }
+    }
+    
+    // Agregar texto
+    ctx.font = 'bold 12px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText(code, canvas.width / 2, 70);
+    
+    return canvas.toDataURL('image/png', 1.0);
+  }
+  
+  function handleAdvancedPDFGeneration() {
+    console.log('📄 [GRAYTHINK-ADVANCED] Iniciando generación de PDF avanzada (React)...');
+    
+    try {
+      showAdvancedFeedback('Generando PDF con formato Gray Think...', 'info');
+      
+      // Recopilar datos del formulario React
+      const formData = collectReactFormData();
+      
+      if (!validateAdvancedFormData(formData)) {
+        showAdvancedFeedback('Completando datos faltantes automáticamente...', 'warning');
+        formData.modelo = formData.modelo || 'Equipo no especificado';
+        formData.receptor = formData.receptor || 'Usuario';
+        formData.fechaRecepcion = new Date().toISOString();
+      }
+      
+      generateOriginalFormatPDF(formData);
+      
+    } catch (error) {
+      console.error('❌ [GRAYTHINK-ADVANCED] Error en generación avanzada:', error);
+      showAdvancedFeedback('Error al generar PDF. Inténtalo de nuevo.', 'error');
+    }
+  }
+  
+  function collectReactFormData() {
+    const formData = {
+      fechaRecepcion: new Date().toISOString(),
+      codigoBarras: generateUniqueCode()
+    };
+    
+    // Buscar inputs y selects en el DOM React
+    const inputs = document.querySelectorAll('input, select, textarea');
+    
+    inputs.forEach(input => {
+      const name = input.name || input.id || input.getAttribute('data-field');
+      const value = input.value || '';
+      
+      if (name && value) {
+        // Mapeo de nombres de campos
+        const fieldMap = {
+          'receptor': 'receptor',
+          'modelo': 'modelo',
+          'numeroSerie': 'numeroSerie',
+          'almacenamiento': 'almacenamiento',
+          'color': 'color',
+          'bateria': 'bateria',
+          'clasificacion': 'clasificacion',
+          'observaciones': 'observaciones',
+          'costo': 'costo',
+          'estadoChassis': 'estadoChassis',
+          'estadoPantalla': 'estadoPantalla',
+          'parlantes': 'parlantes',
+          'auricular': 'auricular',
+          'pinCarga': 'pinCarga',
+          'faceId': 'faceId',
+          'camara': 'camara'
+        };
+        
+        const mappedField = fieldMap[name] || name;
+        formData[mappedField] = value;
+      }
+    });
+    
+    // También intentar obtener datos del localStorage de React
+    try {
+      const keys = ['gray_think_ultimate_v3', 'equipments', 'currentEquipment'];
+      for (const key of keys) {
+        const data = localStorage.getItem(key);
+        if (data) {
+          const parsed = JSON.parse(data);
+          if (parsed.receptor) {
+            Object.assign(formData, parsed);
+            break;
+          }
+        }
+      }
+    } catch (e) {
+      console.warn('⚠️ [GRAYTHINK-ADVANCED] Error leyendo localStorage:', e);
+    }
+    
+    // Valores por defecto
+    formData.costo = formData.costo || '0';
+    formData.bateria = formData.bateria || '0';
+    
+    console.log('📋 [GRAYTHINK-ADVANCED] Datos React recopilados:', formData);
+    return formData;
+  }
+  
+  function validateAdvancedFormData(data) {
+    return data.modelo && data.modelo.trim() !== '';
+  }
+  
+  function generateOriginalFormatPDF(report) {
+    try {
+      if (typeof window.jspdf === 'undefined' && typeof jsPDF === 'undefined') {
+        console.warn('⚠️ [GRAYTHINK-ADVANCED] jsPDF no disponible, usando HTML');
+        generateAdvancedHTMLReport(report);
+        return;
+      }
+      
+      const { jsPDF } = window.jspdf || { jsPDF: window.jsPDF };
+      const pdf = new jsPDF();
+      
+      // Configuración de colores exacta del original
+      const colors = {
+        primary: [0, 0, 0],
+        secondary: [75, 85, 99],
+        accent: [249, 115, 22],
+        success: [40, 167, 69],
+        danger: [220, 53, 69]
+      };
+      
+      // Header con fondo negro
+      pdf.setFillColor(...colors.primary);
+      pdf.rect(0, 0, 210, 30, 'F');
+      
+      // Título Gray Think
+      pdf.setTextColor(255, 255, 255);
+      pdf.setFontSize(18);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text('GRAY THINK | INFORME TÉCNICO', 45, 20);
+      
+      // Código de barras
+      try {
+        const barcodeImg = generateAdvancedBarcode(report.codigoBarras);
+        pdf.addImage(barcodeImg, 'PNG', 135, 3, 70, 24);
+      } catch (error) {
+        console.warn('⚠️ [GRAYTHINK-ADVANCED] Error agregando código de barras');
+      }
+      
+      // Información básica
+      pdf.setTextColor(0, 0, 0);
+      pdf.setFontSize(12);
+      pdf.setFont('helvetica', 'normal');
+      
+      let yPos = 50;
+      const addField = (label, value, color) => {
+        pdf.setFont('helvetica', 'bold');
+        pdf.text(label + ':', 20, yPos);
+        pdf.setFont('helvetica', 'normal');
+        if (color) pdf.setTextColor(...color);
+        pdf.text(value, 80, yPos);
+        pdf.setTextColor(0, 0, 0);
+        yPos += 8;
+      };
+      
+      addField('Fecha de Recepción', new Date(report.fechaRecepcion).toLocaleDateString('es-ES'));
+      addField('Receptor', report.receptor || 'No especificado');
+      addField('Modelo', report.modelo || 'No especificado');
+      addField('Número de Serie', report.numeroSerie || 'No especificado');
+      addField('Almacenamiento', report.almacenamiento || 'No especificado');
+      addField('Color', report.color || 'No especificado');
+      addField('Clasificación', report.clasificacion || 'No especificado');
+      addField('Costo', `$${parseInt(report.costo || 0).toLocaleString('es-ES')}`);
+      
+      // Sección de estado
+      yPos += 10;
+      pdf.setFont('helvetica', 'bold');
+      pdf.setFontSize(14);
+      pdf.text('ESTADO DEL EQUIPO', 20, yPos);
+      yPos += 10;
+      
+      pdf.setFontSize(12);
+      const bateria = parseInt(report.bateria || 0);
+      addField('Nivel de Batería', `${bateria}%`, 
+        bateria > 70 ? colors.success : bateria > 30 ? [255, 193, 7] : colors.danger);
+      addField('Estado del Chassis', report.estadoChassis || 'No especificado');
+      addField('Estado de Pantalla', report.estadoPantalla || 'No especificado');
+      
+      // Componentes
+      yPos += 10;
+      pdf.setFont('helvetica', 'bold');
+      pdf.setFontSize(14);
+      pdf.text('COMPONENTES', 20, yPos);
+      yPos += 10;
+      
+      pdf.setFontSize(12);
+      addField('Parlantes', report.parlantes || 'No especificado', 
+        report.parlantes === 'Perfecto' ? colors.success : colors.danger);
+      addField('Auricular', report.auricular || 'No especificado',
+        report.auricular === 'Perfecto' ? colors.success : colors.danger);
+      addField('Pin de Carga', report.pinCarga || 'No especificado',
+        report.pinCarga === 'Perfecto' ? colors.success : colors.danger);
+      addField('Face ID', report.faceId || 'No especificado',
+        report.faceId === 'Funciona' ? colors.success : colors.danger);
+      addField('Cámara', report.camara || 'No especificado',
+        report.camara === 'Perfecto' ? colors.success : colors.danger);
+      
+      // Observaciones
+      if (report.observaciones && report.observaciones.trim()) {
+        yPos += 10;
+        pdf.setFont('helvetica', 'bold');
+        pdf.setFontSize(14);
+        pdf.text('OBSERVACIONES', 20, yPos);
+        yPos += 10;
+        
+        pdf.setFont('helvetica', 'normal');
+        pdf.setFontSize(12);
+        const splitText = pdf.splitTextToSize(report.observaciones, 170);
+        pdf.text(splitText, 20, yPos);
+        yPos += splitText.length * 6;
+      }
+      
+      // Firma
+      yPos = Math.max(yPos + 20, 250);
+      pdf.line(20, yPos, 80, yPos);
+      pdf.text('Firma del Técnico', 20, yPos + 10);
+      
+      pdf.line(130, yPos, 190, yPos);
+      pdf.text('Fecha', 130, yPos + 10);
+      pdf.text(new Date().toLocaleString('es-ES'), 130, yPos + 20);
+      
+      // Footer
+      pdf.setFontSize(8);
+      pdf.setTextColor(...colors.secondary);
+      pdf.text(`Reporte generado el ${new Date().toLocaleString('es-ES')}`, 20, 280);
+      pdf.text(`Código: ${report.codigoBarras}`, 20, 285);
+      
+      // Descargar
+      const filename = `gray-think-informe-${(report.modelo || 'equipo').replace(/\s+/g, '-')}-${Date.now()}.pdf`;
+      pdf.save(filename);
+      
+      showAdvancedFeedback('PDF generado exitosamente con formato Gray Think', 'success');
+      
+    } catch (error) {
+      console.error('❌ [GRAYTHINK-ADVANCED] Error generando PDF:', error);
+      generateAdvancedHTMLReport(report);
+    }
+  }
+  
+  function generateAdvancedHTMLReport(report) {
+    try {
+      const htmlContent = `
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+          <meta charset="UTF-8">
+          <title>Gray Think - Informe Técnico</title>
+          <style>
+            body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+            .header { background: #000; color: white; padding: 20px; margin: -20px -20px 20px -20px; }
+            .header h1 { margin: 0; font-size: 18px; }
+            .barcode { float: right; background: white; padding: 5px; margin-top: -5px; }
+            .section { margin: 20px 0; }
+            .section h3 { color: #f97316; border-bottom: 2px solid #f97316; padding-bottom: 5px; }
+            .field { margin: 8px 0; }
+            .field strong { display: inline-block; width: 150px; }
+            .success { color: #28a745; }
+            .danger { color: #dc3545; }
+            .signature { margin-top: 40px; }
+            .signature-line { border-top: 1px solid #000; width: 200px; margin: 20px 0 5px 0; }
+            .footer { margin-top: 40px; font-size: 12px; color: #666; }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <div class="barcode">${report.codigoBarras}</div>
+            <h1>GRAY THINK | INFORME TÉCNICO</h1>
+          </div>
+          
+          <div class="section">
+            <div class="field"><strong>Fecha de Recepción:</strong> ${new Date(report.fechaRecepcion).toLocaleDateString('es-ES')}</div>
+            <div class="field"><strong>Receptor:</strong> ${report.receptor || 'No especificado'}</div>
+            <div class="field"><strong>Modelo:</strong> ${report.modelo || 'No especificado'}</div>
+            <div class="field"><strong>Número de Serie:</strong> ${report.numeroSerie || 'No especificado'}</div>
+            <div class="field"><strong>Almacenamiento:</strong> ${report.almacenamiento || 'No especificado'}</div>
+            <div class="field"><strong>Color:</strong> ${report.color || 'No especificado'}</div>
+            <div class="field"><strong>Clasificación:</strong> ${report.clasificacion || 'No especificado'}</div>
+            <div class="field"><strong>Costo:</strong> $${parseInt(report.costo || 0).toLocaleString('es-ES')}</div>
+          </div>
+          
+          <div class="section">
+            <h3>ESTADO DEL EQUIPO</h3>
+            <div class="field"><strong>Nivel de Batería:</strong> <span class="${parseInt(report.bateria || 0) > 70 ? 'success' : 'danger'}">${report.bateria || 0}%</span></div>
+            <div class="field"><strong>Estado del Chassis:</strong> ${report.estadoChassis || 'No especificado'}</div>
+            <div class="field"><strong>Estado de Pantalla:</strong> ${report.estadoPantalla || 'No especificado'}</div>
+          </div>
+          
+          <div class="section">
+            <h3>COMPONENTES</h3>
+            <div class="field"><strong>Parlantes:</strong> <span class="${report.parlantes === 'Perfecto' ? 'success' : 'danger'}">${report.parlantes || 'No especificado'}</span></div>
+            <div class="field"><strong>Auricular:</strong> <span class="${report.auricular === 'Perfecto' ? 'success' : 'danger'}">${report.auricular || 'No especificado'}</span></div>
+            <div class="field"><strong>Pin de Carga:</strong> <span class="${report.pinCarga === 'Perfecto' ? 'success' : 'danger'}">${report.pinCarga || 'No especificado'}</span></div>
+            <div class="field"><strong>Face ID:</strong> <span class="${report.faceId === 'Funciona' ? 'success' : 'danger'}">${report.faceId || 'No especificado'}</span></div>
+            <div class="field"><strong>Cámara:</strong> <span class="${report.camara === 'Perfecto' ? 'success' : 'danger'}">${report.camara || 'No especificado'}</span></div>
+          </div>
+          
+          ${report.observaciones ? `
+          <div class="section">
+            <h3>OBSERVACIONES</h3>
+            <p>${report.observaciones}</p>
+          </div>
+          ` : ''}
+          
+          <div class="signature">
+            <div style="display: inline-block; margin-right: 100px;">
+              <div class="signature-line"></div>
+              <div>Firma del Técnico</div>
+            </div>
+            <div style="display: inline-block;">
+              <div class="signature-line"></div>
+              <div>Fecha</div>
+              <div>${new Date().toLocaleDateString('es-ES')}</div>
+            </div>
+          </div>
+          
+          <div class="footer">
+            <p>Reporte generado el ${new Date().toLocaleString('es-ES')}</p>
+            <p>Código: ${report.codigoBarras}</p>
+          </div>
+        </body>
+        </html>
+      `;
+      
+      const blob = new Blob([htmlContent], { type: 'text/html' });
+      const filename = `gray-think-informe-${(report.modelo || 'equipo').replace(/\s+/g, '-')}-${Date.now()}.html`;
+      downloadAdvancedBlob(blob, filename);
+      
+      showAdvancedFeedback('Informe generado como HTML (abrir con navegador para imprimir como PDF)', 'success');
+      
+    } catch (error) {
+      console.error('❌ [GRAYTHINK-ADVANCED] Error generando HTML:', error);
+      showAdvancedFeedback('Error al generar informe', 'error');
+    }
+  }
+  
+  function handleAdvancedExcelGeneration() {
+    console.log('📊 [GRAYTHINK-ADVANCED] Iniciando generación de Excel avanzada (React)...');
+    
+    try {
+      showAdvancedFeedback('Generando Excel con datos Gray Think...', 'info');
+      
+      const equipments = getAdvancedStoredEquipments();
+      
+      if (equipments.length === 0) {
+        const formData = collectReactFormData();
+        equipments.push(formData);
+      }
+      
+      if (typeof XLSX !== 'undefined') {
+        generateAdvancedExcel(equipments);
+      } else {
+        generateAdvancedCSV(equipments);
+      }
+      
+    } catch (error) {
+      console.error('❌ [GRAYTHINK-ADVANCED] Error en generación Excel:', error);
+      showAdvancedFeedback('Error al generar Excel. Inténtalo de nuevo.', 'error');
+    }
+  }
+  
+  function generateAdvancedExcel(data) {
+    try {
+      const workbook = XLSX.utils.book_new();
+      
+      const headers = [
+        'Fecha de Recepción', 'Receptor', 'Modelo', 'Número de Serie', 'Almacenamiento',
+        'Color', 'Clasificación', 'Costo', 'Batería', 'Estado Chassis', 'Estado Pantalla',
+        'Parlantes', 'Auricular', 'Pin de Carga', 'Face ID', 'Cámara', 'Observaciones', 'Código de Barras'
+      ];
+      
+      const wsData = [
+        headers,
+        ...data.map(item => [
+          new Date(item.fechaRecepcion || Date.now()).toLocaleDateString('es-ES'),
+          item.receptor || '',
+          item.modelo || '',
+          item.numeroSerie || '',
+          item.almacenamiento || '',
+          item.color || '',
+          item.clasificacion || '',
+          item.costo || '0',
+          item.bateria || '0',
+          item.estadoChassis || '',
+          item.estadoPantalla || '',
+          item.parlantes || '',
+          item.auricular || '',
+          item.pinCarga || '',
+          item.faceId || '',
+          item.camara || '',
+          item.observaciones || '',
+          item.codigoBarras || ''
+        ])
+      ];
+      
+      const worksheet = XLSX.utils.aoa_to_sheet(wsData);
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'Equipos Gray Think');
+      
+      const filename = `gray-think-equipos-${Date.now()}.xlsx`;
+      XLSX.writeFile(workbook, filename);
+      
+      showAdvancedFeedback('Excel generado exitosamente', 'success');
+      
+    } catch (error) {
+      console.error('❌ [GRAYTHINK-ADVANCED] Error con XLSX:', error);
+      generateAdvancedCSV(data);
+    }
+  }
+  
+  function generateAdvancedCSV(data) {
+    try {
+      const headers = [
+        'Fecha de Recepción', 'Receptor', 'Modelo', 'Número de Serie', 'Almacenamiento',
+        'Color', 'Clasificación', 'Costo', 'Batería', 'Estado Chassis', 'Estado Pantalla',
+        'Parlantes', 'Auricular', 'Pin de Carga', 'Face ID', 'Cámara', 'Observaciones', 'Código de Barras'
+      ];
+      
+      const csvContent = [
+        headers.join(','),
+        ...data.map(item => [
+          `"${new Date(item.fechaRecepcion || Date.now()).toLocaleDateString('es-ES')}"`,
+          `"${item.receptor || ''}"`,
+          `"${item.modelo || ''}"`,
+          `"${item.numeroSerie || ''}"`,
+          `"${item.almacenamiento || ''}"`,
+          `"${item.color || ''}"`,
+          `"${item.clasificacion || ''}"`,
+          `"${item.costo || '0'}"`,
+          `"${item.bateria || '0'}"`,
+          `"${item.estadoChassis || ''}"`,
+          `"${item.estadoPantalla || ''}"`,
+          `"${item.parlantes || ''}"`,
+          `"${item.auricular || ''}"`,
+          `"${item.pinCarga || ''}"`,
+          `"${item.faceId || ''}"`,
+          `"${item.camara || ''}"`,
+          `"${(item.observaciones || '').replace(/"/g, '""')}"`,
+          `"${item.codigoBarras || ''}"`
+        ].join(','))
+      ].join('\n');
+      
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const filename = `gray-think-equipos-${Date.now()}.csv`;
+      downloadAdvancedBlob(blob, filename);
+      
+      showAdvancedFeedback('Datos exportados como CSV', 'success');
+      
+    } catch (error) {
+      console.error('❌ [GRAYTHINK-ADVANCED] Error generando CSV:', error);
+      showAdvancedFeedback('Error al exportar datos', 'error');
+    }
+  }
+  
+  function getAdvancedStoredEquipments() {
+    try {
+      const keys = [
+        'gray_think_ultimate_v3',
+        'gray_think_backup_v3',
+        'gray_think_equipments_v2',
+        'gray_think_equipments',
+        'equipments'
+      ];
+      
+      for (const key of keys) {
+        const data = localStorage.getItem(key);
+        if (data) {
+          const parsed = JSON.parse(data);
+          if (Array.isArray(parsed)) {
+            return parsed;
+          } else if (parsed.equipments && Array.isArray(parsed.equipments)) {
+            return parsed.equipments;
+          }
+        }
+      }
+      
+      return [];
+    } catch (error) {
+      console.warn('⚠️ [GRAYTHINK-ADVANCED] Error cargando equipos:', error);
+      return [];
+    }
+  }
+  
+  function generateUniqueCode() {
+    return Date.now().toString() + Math.random().toString(36).substr(2, 5).toUpperCase();
+  }
+  
+  function downloadAdvancedBlob(blob, filename) {
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setTimeout(() => URL.revokeObjectURL(url), 100);
+  }
+  
+  function addAdvancedVisualFeedback() {
+    if (!document.getElementById('graythink-advanced-notifications')) {
+      const container = document.createElement('div');
+      container.id = 'graythink-advanced-notifications';
+      container.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 10000;
+        max-width: 350px;
+        font-family: Arial, sans-serif;
+      `;
+      document.body.appendChild(container);
+    }
+  }
+  
+  function showAdvancedFeedback(message, type = 'info') {
+    console.log(`📢 [GRAYTHINK-ADVANCED] ${type.toUpperCase()}: ${message}`);
+    
+    const container = document.getElementById('graythink-advanced-notifications');
+    if (!container) return;
+    
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+      margin-bottom: 10px;
+      padding: 15px 20px;
+      border-radius: 8px;
+      color: white;
+      font-size: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      animation: slideInAdvanced 0.3s ease-out;
+      background: ${getAdvancedColorForType(type)};
+      border-left: 4px solid ${getAdvancedAccentColor(type)};
+    `;
+    
+    notification.innerHTML = `
+      <div style="display: flex; align-items: center;">
+        <span style="margin-right: 10px; font-size: 16px;">${getAdvancedIcon(type)}</span>
+        <span>${message}</span>
+      </div>
+    `;
+    
+    container.appendChild(notification);
+    
+    setTimeout(() => {
+      if (notification.parentNode) {
+        notification.style.animation = 'slideOutAdvanced 0.3s ease-in forwards';
+        setTimeout(() => {
+          if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
+          }
+        }, 300);
+      }
+    }, 5000);
+  }
+  
+  function getAdvancedColorForType(type) {
+    const colors = {
+      success: 'linear-gradient(135deg, #10b981, #059669)',
+      error: 'linear-gradient(135deg, #ef4444, #dc2626)',
+      warning: 'linear-gradient(135deg, #f59e0b, #d97706)',
+      info: 'linear-gradient(135deg, #3b82f6, #2563eb)'
+    };
+    return colors[type] || colors.info;
+  }
+  
+  function getAdvancedAccentColor(type) {
+    const colors = {
+      success: '#34d399',
+      error: '#f87171',
+      warning: '#fbbf24',
+      info: '#60a5fa'
+    };
+    return colors[type] || colors.info;
+  }
+  
+  function getAdvancedIcon(type) {
+    const icons = {
+      success: '✅',
+      error: '❌',
+      warning: '⚠️',
+      info: '📄'
+    };
+    return icons[type] || icons.info;
+  }
+  
+  // Agregar animaciones CSS
+  if (!document.getElementById('graythink-advanced-styles')) {
+    const advancedStyle = document.createElement('style');
+    advancedStyle.id = 'graythink-advanced-styles';
+    advancedStyle.textContent = `
+      @keyframes slideInAdvanced {
+        from {
+          transform: translateX(100%) scale(0.8);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0) scale(1);
+          opacity: 1;
+        }
+      }
+      
+      @keyframes slideOutAdvanced {
+        from {
+          transform: translateX(0) scale(1);
+          opacity: 1;
+        }
+        to {
+          transform: translateX(100%) scale(0.8);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(advancedStyle);
+  }
+  
+  console.log('✅ [GRAYTHINK-ADVANCED] Corrección avanzada inicializada (React + Formato Original)');
+  
+})();
+  </script>
 </body>
 
 </html>

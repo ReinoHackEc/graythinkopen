@@ -1,0 +1,31 @@
+SKU,Nombre
+5674632524,iPhone 15 128GB Black
+865457346,iPad mini 7
+796865374635,MacBook Pro 2015
+123456789,Samsung Galaxy S24
+987654321,Dell XPS 13
+456789123,Sony WH-1000XM5
+789123456,Nintendo Switch OLED
+321654987,Microsoft Surface Pro 9
+654987321,AirPods Pro 2
+147258369,Xiaomi Mi 13 Pro
+ABC123,Producto Especial A
+1,Producto Simple
+XYZ999888777,Producto Con SKU Largo
+555,Tablet Genérica
+ALPHA001,Monitor 4K Professional
+BETA002,Teclado Mecánico RGB
+GAMMA003,Mouse Gaming Inalámbrico
+DELTA004,Webcam HD 1080p
+EPSILON005,Micrófono USB Condensador
+ZETA006,Altavoces Bluetooth Premium
+A1,Producto A1 (SKU Corto)
+A2,Producto A2 (SKU Corto)
+A3,Producto A3 (SKU Corto)
+999888777666,Producto con SKU Numérico Largo
+MIX123ABC,Producto SKU Mixto
+TEST_001,Producto de Prueba 1
+TEST-002,Producto de Prueba 2
+TEST.003,Producto de Prueba 3
+456789879568575000,Producto SKU Extremadamente Largo
+Z,Producto SKU Mínimo
