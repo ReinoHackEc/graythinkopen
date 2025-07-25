@@ -822,6 +822,13 @@
   
 })();
   </script>
+
+  <!-- Carga el archivo override.js con mejoras de generación de PDF y etiquetas.
+       Este script redefine las funciones generateLabel y generateReport del
+       constructor interno de la aplicación para producir reportes y etiquetas
+       idénticos al formato original de MiniMax. Debe cargarse después del
+       bundle principal para que las clases y funciones estén disponibles. -->
+  <script src="/assets/override.js"></script>
 </body>
 
 </html>
